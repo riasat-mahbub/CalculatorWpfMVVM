@@ -67,7 +67,14 @@ namespace Calculator.Models
         {
             if (!_encloseBracketStack.Any())
             {
-                Expression += Regex.IsMatch(Expression.`Last().ToString(), @"\d") ? $"*{OpenBracketSign}" : OpenBracketSign;
+                if(Expression.Length == 0)
+                {
+                    Expression += OpenBracketSign;
+                }
+                else
+                {
+                    Expression += Regex.IsMatch(Expression.Last().ToString(), @"\d") ? $"*{OpenBracketSign}" : OpenBracketSign;
+                }
                 _encloseBracketStack.Push(EncloseBracketSign);
                 Result = string.Empty;
             }
