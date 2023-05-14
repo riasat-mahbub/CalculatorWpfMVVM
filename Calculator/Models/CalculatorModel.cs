@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -66,7 +67,7 @@ namespace Calculator.Models
         {
             if (!_encloseBracketStack.Any())
             {
-                Expression += Regex.IsMatch(Expression.Last().ToString(), @"\d") ? $"*{OpenBracketSign}" : OpenBracketSign;
+                Expression += Regex.IsMatch(Expression.`Last().ToString(), @"\d") ? $"*{OpenBracketSign}" : OpenBracketSign;
                 _encloseBracketStack.Push(EncloseBracketSign);
                 Result = string.Empty;
             }
@@ -79,8 +80,8 @@ namespace Calculator.Models
 
         public void Insert(string element)
         {
-            if (Regex.IsMatch(element, @"[+\-*/%,]"))
-                Expression += string.IsNullOrEmpty(Expression) || Regex.IsMatch(Expression, @"[+\-*/%]$") ? string.Empty : element;
+            if (Regex.IsMatch(element, @"[+\-*/^,]"))
+                Expression += string.IsNullOrEmpty(Expression) || Regex.IsMatch(Expression, @"[+\-*/^]$") ? string.Empty : element;
             else
                 Expression += element;
 

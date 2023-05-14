@@ -96,9 +96,8 @@
                 <Button Name="ButtonPercentage" 
                         Grid.Row="0" Grid.Column="2" 
                         Style="{StaticResource Actions}" 
-                        Command="{Binding InsertOperationCommand}"
-                        CommandParameter="{x:Static models:Operations.Percentage}"
-                        Content="%" />
+                        
+                        Content="^" />
 
                 <Button Name="ButtonDivide"     
                         Grid.Row="0" Grid.Column="3" 
